@@ -23,8 +23,9 @@
       font-size: 1.5em;
       font-weight: bold;
 
-      font-size: 32px;
+      font-size: 20px;
       margin-bottom: 20px;
+      margin-top: 20px;
       font-weight: bold;
 
       background-color: rgba(255, 255, 255, 0.5); /* Полупрозрачный белый фон */
@@ -42,48 +43,66 @@
       border-radius: 7px; /* Скругленные углы фона (по желанию) */
     }
     .buttons {
-      margin-top: 20px;
+    position: fixed; /* Фиксируем кнопки относительно окна браузера */
+    bottom: 50px; /* Расстояние от нижнего края окна */
+    left: 50%; /* Центруем по горизонтали */
+    transform: translateX(-50%); /* Для идеального центрирования */
+    display: flex;
+    gap: 120px; /* Расстояние между кнопками */
     }
+
     button {
-      padding: 10px 20px;
-      margin: 5px;
-      font-size: 1em;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-      width: 120px;
-      height: 50px;
-      color: white;
-      transition: background-color 0.3s;
+    padding: 10px 20px;
+    margin: 0; /* Убираем ненужные отступы */
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    color: white;
+    transition: background-color 0.3s;
     }
+
     #prevButton {
-      background-color: yellow;
-      color: black;
+    background-color: rgb(117, 117, 37);
+    color: black;
     }
+
     #prevButton:hover {
-      background-color: gold;
+    background-color: rgba(170, 148, 21, 0.377);
+
     }
+
     #nextButton {
-      background-color: blue;
+    background-color: rgb(62, 62, 138);
+    width: 77pt;
     }
+
     #nextButton:hover {
-      background-color: darkblue;
+    background-color: rgb(40, 40, 109);
     }
+
     #playPauseButton {
-      font-weight: bold;
+    font-weight: bold;
     }
+
     .play {
-      background-color: green;
+    background-color: rgb(22, 71, 22);
     }
+
     .play:hover {
-      background-color: darkgreen;
+    background-color: darkgreen;
     }
+
     .pause {
-      background-color: red;
+    background-color: rgb(116, 30, 30);
     }
+
     .pause:hover {
-      background-color: darkred;
+    background-color: rgb(77, 32, 32);
     }
+
+    
+
 
     .background1 {
       background-image: url('background01.jpg');
