@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lyrics</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f4f4f9;
+      transition: background-image 0.5s ease;
+      align-items: center;
+    }
+    #poem {
+      margin: 20px 0;
+      font-size: 1.5em;
+      font-weight: bold;
+
+      font-size: 32px;
+      margin-bottom: 20px;
+      font-weight: bold;
+
+      background-color: rgba(255, 255, 255, 0.5); /* Полупрозрачный белый фон */
+      color: #000000; /* Черный текст */
+      padding: 4px; /* Отступы для текста */
+      border-radius: 7px; /* Скругленные углы фона (по желанию) */
+    }
+    #translation {
+      margin: 10px 0;
+      font-size: 1.2em;
+      color: #333131;
+      background-color: rgba(255, 255, 255, 0.5); /* Полупрозрачный белый фон */
+
+      padding: 4px; /* Отступы для текста */
+      border-radius: 7px; /* Скругленные углы фона (по желанию) */
+    }
+    .buttons {
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 1em;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      width: 120px;
+      height: 50px;
+      color: white;
+      transition: background-color 0.3s;
+    }
+    #prevButton {
+      background-color: yellow;
+      color: black;
+    }
+    #prevButton:hover {
+      background-color: gold;
+    }
+    #nextButton {
+      background-color: blue;
+    }
+    #nextButton:hover {
+      background-color: darkblue;
+    }
+    #playPauseButton {
+      font-weight: bold;
+    }
+    .play {
+      background-color: green;
+    }
+    .play:hover {
+      background-color: darkgreen;
+    }
+    .pause {
+      background-color: red;
+    }
+    .pause:hover {
+      background-color: darkred;
+    }
+
+    .background1 {
+      background-image: url('background01.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    .background2 {
+      background-image: url('background02.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    .background3 {
+      background-image: url('background03.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    .background4 {
+      background-image: url('background04.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="poem">Loading poem...</div>
+  <div id="translation"></div>
+  <div class="buttons">
+    <button id="prevButton" onclick="previousPoem()">Previous</button>
+    <button id="nextButton" onclick="nextPoem()">Next</button>
+  </div>
+  <div class="buttons">
+    <button id="playPauseButton" class="pause" onclick="togglePlayPause()">Pause</button>
+  </div>
+  <audio id="audio"></audio>
+
+  <div id="progress-container" style="margin-top: 20px;">
+    <input
+      id="progress-bar"
+      type="range"
+      min="0"
+      max="100"
+      value="0"
+      style="width: 400px;" <!-- Задаем фиксированную длину в пикселях -->
+  </div>
+  
+
+  <script>
+    const poems = [
+      {
+        english: "Do you still remember how we used to be?<br>Feeling together, believing whatever<br>My love has said to me<br>Both of us were dreamers<br>Young love in the sun<br>Felt like my savior, my spirit I gave you<br>We'd only just begun",
+        russian: "Ты все еще помнишь, какими мы были раньше?<br>Чувствуя друг друга, веря во все,<br>Что говорила мне моя любовь.<br>Мы оба были мечтателями,<br>Юная любовь на солнце,<br>Чувствовала себя моим спасителем, свой дух я отдала тебе.<br>Мы только начали.",
+        audio: "audio1.mp3"
+      },
+      {
+        english: "You only see what your eyes want to see<br>How can life be what you want it to be<br>You're frozen when your heart's not open<br><br>You're so consumed with how much you get<br>You waste your time with hate and regret<br>You're broken when your heart's not open",
+        russian: "Ты видишь только то, что хотят видеть твои глаза<br>Как жизнь может быть такой, какой ты хочешь её видеть?<br>Ты замерзаешь, когда твоё сердце закрыто.<br><br>Ты так поглощён тем, сколько ты получаешь,<br>Ты тратишь своё время на ненависть и сожаления.<br>Ты сломлен, когда твоё сердце закрыто.",
+        audio: "audio2.mp3"
+      },
+      {
+        english: "Hello, hello, hello, how low<br>Hello, hello, hello<br><br>With the lights out, it's less dangerous<br>Here we are now, entertain us<br>I feel stupid and contagious<br>Here we are now, entertain us",
+        russian: "Привет, привет, привет, как низко<br>Привет, привет, привет<br><br>С выключенным светом это менее опасно<br>Вот мы и здесь, развлекайте нас<br>Я чувствую себя глупым и заразным<br>Вот мы и здесь, развлекайте нас",
+        audio: "audio3.mp3"
+      },
+      {
+        english: "What I’ve felt what I’ve known<br>Never shined through in what I’ve shown<br>Never be never see<br>Won’t see what might have been<br><br>What I’ve felt what I’ve known<br>Never shined through in what I’ve shown<br>Never free Never me<br>So I dub thee Unforgiven",
+        russian: "Что я чувствовал, что я знал<br>Никогда не просвечивало в том, что я показывал<br>Никогда не буду, никогда не увижу<br>Не увижу того, что могло бы быть<br><br>Что я чувствовал, что я знал<br>Никогда не просвечивало в том, что я показывал<br>Никогда свободен, никогда не я<br>Так что я нарекаю тебя Непрощенным",
+        audio: "audio4.mp3"
+      }
+    ];
+
+    let currentIndex = Math.floor(Math.random() * poems.length);
+    let isPlaying = false;
+
+    const audio = document.getElementById("audio");
+    const progressBar = document.getElementById("progress-bar");
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadPoem(currentIndex);
+      updatePlayPauseButton();
+    });
+
+    audio.addEventListener("timeupdate", updateProgressBar);
+
+    audio.addEventListener("ended", () => {
+      isPlaying = false;
+      updatePlayPauseButton();
+    });
+
+    function loadPoem(index) {
+      const poem = poems[index];
+      document.getElementById("poem").innerHTML = poem.english;
+      document.getElementById("translation").innerHTML = poem.russian;
+
+      audio.src = poem.audio;
+      audio.currentTime = 0;
+      progressBar.value = 0;
+
+      updateBackground(index);
+    }
+
+    function playAudio() {
+      audio.play();
+      isPlaying = true;
+      updatePlayPauseButton();
+    }
+
+    function togglePlayPause() {
+      if (isPlaying) {
+        audio.pause();
+      } else {
+        audio.play();
+      }
+      isPlaying = !isPlaying;
+      updatePlayPauseButton();
+    }
+
+    function updatePlayPauseButton() {
+      const button = document.getElementById("playPauseButton");
+      if (isPlaying) {
+        button.classList.remove("pause");
+        button.classList.add("play");
+        button.textContent = "is Playing";
+      } else {
+        button.classList.remove("play");
+        button.classList.add("pause");
+        button.textContent = "on Pause";
+      }
+    }
+
+    function updateProgressBar() {
+      const progress = (audio.currentTime / audio.duration) * 100;
+      progressBar.value = progress;
+    }
+
+    function seekAudio() {
+      const seekTime = (progressBar.value / 100) * audio.duration;
+      audio.currentTime = seekTime;
+    }
+
+    function updateBackground(index) {
+      const body = document.body;
+      body.classList.remove("background1", "background2", "background3", "background4");
+
+      switch (index) {
+        case 0:
+          body.classList.add("background1");
+          break;
+        case 1:
+          body.classList.add("background2");
+          break;
+        case 2:
+          body.classList.add("background3");
+          break;
+        case 3:
+          body.classList.add("background4");
+          break;
+      }
+    }
+
+    function previousPoem() {
+      currentIndex = currentIndex === 0 ? poems.length - 1 : currentIndex - 1;
+      loadPoem(currentIndex);
+      playAudio();
+    }
+
+    function nextPoem() {
+      currentIndex = (currentIndex + 1) % poems.length;
+      loadPoem(currentIndex);
+      playAudio();
+    }
+  </script>
+</body>
+</html>
