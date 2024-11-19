@@ -102,10 +102,6 @@
     .pause:hover {
     background-color: rgb(77, 32, 32);
     }
-
-    
-
-
     .background1 {
       background-image: url('background01.jpg');
       background-size: cover;
@@ -123,6 +119,16 @@
     }
     .background4 {
       background-image: url('background04.jpg');
+      background-size: cover;
+      background-position: center;
+    }    
+    .background5 {
+      background-image: url('background05.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    .background6 {
+      background-image: url('background06.jpg');
       background-size: cover;
       background-position: center;
     }
@@ -155,7 +161,7 @@
     const poems = [
       {
         english: "Do you still remember how we used to be?<br>Feeling together, believing whatever<br>My love has said to me<br>Both of us were dreamers<br>Young love in the sun<br>Felt like my savior, my spirit I gave you<br>We'd only just begun",
-        russian: "Ты все еще помнишь, какими мы были раньше?<br>Чувствуя друг друга, веря во все,<br>Что говорила мне моя любовь.<br>Мы оба были мечтателями,<br>Юная любовь на солнце,<br>Чувствовала себя моим спасителем, свой дух я отдала тебе.<br>Мы только начали.",
+        russian: "Помнишь ли ты, как у нас всё было, Что мы пережили вместе.<br>Верь всему, Сказала моя любовь.<br>Мы оба были мечтателями, а наша любовь зародилась Под лучами солнца незадолго до этого.<br>Я видела в тебе своего спасителя И отдала тебе всю себя. Тогда у нас всё только начиналось.",
         audio: "audio1.mp3"
       },
       {
@@ -164,15 +170,30 @@
         audio: "audio2.mp3"
       },
       {
-        english: "Hello, hello, hello, how low<br>Hello, hello, hello<br><br>With the lights out, it's less dangerous<br>Here we are now, entertain us<br>I feel stupid and contagious<br>Here we are now, entertain us",
-        russian: "Привет, привет, привет, как низко<br>Привет, привет, привет<br><br>С выключенным светом это менее опасно<br>Вот мы и здесь, развлекайте нас<br>Я чувствую себя глупым и заразным<br>Вот мы и здесь, развлекайте нас",
+        english: "Yes, I still remember every whispered word<br>The touch of your skin, giving life from within<br>Like a love song never heard<br>Slippin' through our fingers, like the sands of time<br>Promises made, every memory saved<br>As reflections in my mind",
+        russian: "Да, я всё ещё помню Каждое произнесённое слово.<br>Твои прикосновения оживляли меня изнутри,<br>Как песня о любви, которую я слышала.<br>Данные обещания так и не были выполнены, Оставшись в прошлом,<br>Но каждое воспоминание сохранилось И теперь живёт в моей памяти.",
         audio: "audio3.mp3"
       },
       {
         english: "What I’ve felt what I’ve known<br>Never shined through in what I’ve shown<br>Never be never see<br>Won’t see what might have been<br><br>What I’ve felt what I’ve known<br>Never shined through in what I’ve shown<br>Never free Never me<br>So I dub thee Unforgiven",
-        russian: "Что я чувствовал, что я знал<br>Никогда не просвечивало в том, что я показывал<br>Никогда не буду, никогда не увижу<br>Не увижу того, что могло бы быть<br><br>Что я чувствовал, что я знал<br>Никогда не просвечивало в том, что я показывал<br>Никогда свободен, никогда не я<br>Так что я нарекаю тебя Непрощенным",
+        russian: "Всё, что я чувствовал, Всё, что я знал,<br>Я никогда не показывал,<br>Никогда, Ни за что,<br>Не увидеть того, что могло бы случиться.<br><br>Всё, что я чувствовал, Всё, что я знал,<br>Я никогда не показывал,<br>Несвободный, Сам не свой,<br>Я нарекаю тебя непрощённым.",
         audio: "audio4.mp3"
+      },
+
+      {
+        english: "They dedicate their lives To running all of his<br>He tries to please them all This bitter man he is<br>Throughout his life the same He's battled constantly<br>This fight he cannot win A tired man they see<br>no longer cares The old man then prepares<br>To die regretfully That old man here is me",
+        russian: "Они посвятили свои жизни тому, Чтобы подавлять его,<br>Он пытается угодить им всем, Он так жалок,<br>Вся его жизнь - Постоянная битва,<br>Которую ему не выиграть, Усталому человеку, которого они видят,<br>уже всё безразлично Старик готовится<br>Умереть в раскаянии, И этот старик — я.",
+        audio: "audio5.mp3"
+      },
+
+      {
+        english: "Now there's no point in placing the blame<br>And you should know I suffer the same<br>If I lose you My heart will be broken<br>Love is a bird, she needs to fly<br>Let all the hurt inside of you die<br>You're frozen When your heart's not open",
+        russian: "Теперь нет смысла обвинять<br>И вы должны знать, что я страдаю так же<br>Если я потеряю тебя Мое сердце будет разбито<br>Любовь - птица, ей нужно летать<br>Пусть вся боль внутри тебя умрет<br>ты заморожен Когда твое сердце не открыто",
+        audio: "audio6.mp3"
       }
+
+
+
     ];
 
     let currentIndex = Math.floor(Math.random() * poems.length);
@@ -269,6 +290,12 @@
           break;
         case 3:
           body.classList.add("background4");
+          break;
+        case 4:
+          body.classList.add("background5");
+          break;
+        case 5:
+          body.classList.add("background6");
           break;
       }
     }
