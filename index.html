@@ -153,6 +153,11 @@
     background-size: cover;
     background-position: center;
     }
+    .background11 {
+    background-image: url('background11.jpg');
+    background-size: cover;
+    background-position: center;
+    }
   </style>
 </head>
 <body>
@@ -192,7 +197,7 @@
       },
       {
         english: "Yes, I still remember<br>Every whispered word<br>The touch of your skin,<br>Giving life from within<br>Like a love song never heard<br><br>Slippin' through our fingers,<br>Like the sands of time<br>Promises made,<br>Every memory saved<br>As reflections in my mind",
-        russian: "Да, я всё ещё помню<br>Каждое произнесённое слово.<br>Твои прикосновения<br>Оживляли меня изнутри,<br>Как песня о любви, которую я слышала.<br><br>Ускользая сквозь наши пальцы,<br>Как пески времен<br>Обещания сделаны<br>Каждое воспоминание сохранено<br>Как отражение в моем уме.",
+        russian: "Да, я всё ещё помню<br>Каждое произнесённое слово.<br>Твои прикосновения<br>Оживляли меня изнутри,<br>Как песня о любви, которую я слышала.<br><br>Ускользая сквозь наши пальцы,<br>Как пески времен<br>Обещания сделаны<br>Каждое воспоминание сохранено<br>Как отражения в моем уме.",
         audio: "audio3.mp3"
       },
       {
@@ -235,6 +240,12 @@
         english: "wake me up inside<br>(I can't wake up) wake me up inside<br>(Save me) call my name and save me from the dark<br>(Wake me up) bid my blood to run<br>(I can't wake up) before I come undone<br>(Save me) save me from the nothing I've become",
         russian: "Разбуди меня изнутри<br>(Я не могу проснуться) Разбуди меня изнутри<br>(Спаси меня) Назови моё имя и спаси меня от тьмы<br>(Разбуди меня) Заставь мою кровь бежать<br>(Я не могу проснуться) прежде, чем я погибну<br>(Спаси меня) Спаси меня от того ничтожества, которым я стал",
         audio: "audio10.mp3"
+      },
+
+      {
+        english: "Someday love will find you<br>Break those chains that bind you<br>One night will remind you<br>How we touched and went our separate ways<br><br>If he ever hurts you<br>True love won't desert you<br>You know I still love you<br>Though we touched and went our separate ways",
+        russian: "Однажды любовь найдет тебя<br>Разорвет цепи, что связывают тебя<br>Однажды ночь напомнит тебе<br>Как мы соприкоснулись и разошлись<br><br>Если он когда-нибудь причинит тебе боль<br>Настоящая любовь не покинет тебя<br>Ты знаешь, я все еще люблю тебя<br>Хотя мы соприкоснулись и разошлись",
+        audio: "audio11.mp3"
       }
 
 
@@ -353,6 +364,12 @@
           break;
         case 9:
           body.classList.add("background10");
+          break;  
+        case 10:
+          body.classList.add("background11");
+          break;
+        case 11:
+          body.classList.add("background12");
           break;       }
     }
 
@@ -367,6 +384,7 @@
       loadPoem(currentIndex);
       playAudio();
     }
+
   </script>
 </body>
 </html>
