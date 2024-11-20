@@ -143,6 +143,16 @@
     background-size: cover;
     background-position: center;
     }
+    .background9 {
+    background-image: url('background09.jpg');
+    background-size: cover;
+    background-position: center;
+    }
+    .background10 {
+    background-image: url('background10.jpg');
+    background-size: cover;
+    background-position: center;
+    }
   </style>
 </head>
 <body>
@@ -213,6 +223,18 @@
         english: "(You better lose) yourself in the music<br>The moment, you own it, you better never let it go (go)<br>You only get one shot, do not miss your chance to blow<br>This opportunity comes once in a lifetime, yo",
         russian: "(Тебе лучше потерять) себя в музыке<br>Момент, которым ты владеешь, тебе лучше никогда его не упускать (уходить)<br>У тебя есть только один шанс, не упусти свой шанс взорваться<br>Такая возможность выпадает раз в жизни, йоу",
         audio: "audio8.mp3"
+      },
+
+      {
+        english: "How can you see into my eyes<br>Like open doors?<br>Leading you down into my core<br>Where I've become so numb<br>Without a soul (soul)<br>My spirit's sleeping somewhere cold<br>Until you find it there and lead it back home",
+        russian: "Как ты можешь смотреть в мои глаза,<br>Как в открытые двери?<br>Ведущих тебя в мою суть,<br>Где я так оцепенел,<br>Без души (души),<br>Мой дух спит где-то холодном,<br>Пока ты не найдешь его там и не приведешь обратно домой.",
+        audio: "audio9.mp3"
+      },
+
+      {
+        english: "wake me up inside<br>(I can't wake up) wake me up inside<br>(Save me) call my name and save me from the dark<br>(Wake me up) bid my blood to run<br>(I can't wake up) before I come undone<br>(Save me) save me from the nothing I've become",
+        russian: "Разбуди меня изнутри<br>(Я не могу проснуться) Разбуди меня изнутри<br>(Спаси меня) Назови моё имя и спаси меня от тьмы<br>(Разбуди меня) Заставь мою кровь бежать<br>(Я не могу проснуться) прежде, чем я погибну<br>(Спаси меня) Спаси меня от того ничтожества, которым я стал",
+        audio: "audio10.mp3"
       }
 
 
@@ -323,10 +345,15 @@
         case 6:
           body.classList.add("background7");
           break;
-          case 7:
-        body.classList.add("background8");
-        break;
-      }
+        case 7:
+          body.classList.add("background8");
+          break;
+        case 8:
+          body.classList.add("background9");
+          break;
+        case 9:
+          body.classList.add("background10");
+          break;       }
     }
 
     function previousPoem() {
