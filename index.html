@@ -5,187 +5,152 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lyrics</title>
   <style>
+    /* Основные стили для страницы */
     body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      height: 100vh;
-      background-color: #f4f4f9;
-      transition: background-image 0.5s ease;
-      align-items: center;
-    }
-    #poem {
-      margin: 10px 0;
-      font-size: 1.5em;
-      font-weight: bold;
-
-      font-size: 17px;
-      margin-bottom: 20px;
-      margin-top: 20px;
-      font-weight: bold;
-
-      background-color: rgba(255, 255, 255, 0.5); /* Полупрозрачный белый фон */
-      color: #000000; /* Черный текст */
-      padding: 4px; /* Отступы для текста */
-      border-radius: 7px; /* Скругленные углы фона (по желанию) */
-    }
-    #translation {
-      margin: 10px 0;
-      font-size: 14px;
-      color: #333131;
-      background-color: rgba(255, 255, 255, 0.5); /* Полупрозрачный белый фон */
-
-      padding: 4px; /* Отступы для текста */
-      border-radius: 7px; /* Скругленные углы фона (по желанию) */
-    }
-    .buttons {
-    position: fixed; /* Фиксируем кнопки относительно окна браузера */
-    bottom: 50px; /* Расстояние от нижнего края окна */
-    left: 50%; /* Центруем по горизонтали */
-    transform: translateX(-50%); /* Для идеального центрирования */
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
     display: flex;
-    gap: 120px; /* Расстояние между кнопками */
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    background: url('image.jpg') no-repeat center center / cover;
+    transition: background 0.5s ease;
+    align-items: center;
+  }
+
+    /* Стиль для текста стихотворения */
+    #poem {
+      font-size: 18px;
+      font-weight: bold;
+      background-color: rgba(255, 255, 255, 0.884);
+      color: #000;
+      padding: 10px;
+      border-radius: 17px;
+      margin: 20px 0;
     }
 
-    button {
-    padding: 10px 20px;
-    margin: 0; /* Убираем ненужные отступы */
-    font-size: 1em;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    color: white;
-    transition: background-color 0.3s;
+    /* Стиль для перевода */
+    #translation {
+      font-size: 17px;
+      color: #020202;
+      /* background-color: rgba(255, 255, 255, 0.39);*/
+      padding: 10px;
+      border-radius: 17px;
+      margin-bottom: 130px; /* Добавление нижнего отступа */
     }
 
+    .control-button {
+      width: 70px; /* Диаметр кнопки */
+      height: 70px; /* Диаметр кнопки */
+      font-size: 16px; /* Размер текста */
+      text-align: center; /* Выравнивание текста по центру */
+      border: none; /* Убираем границы */
+      cursor: pointer; /* Курсор указатель */
+      border-radius: 250px; /* Скругленные углы */
+      font-weight: bold; /* Жирный текст */
+      color: white; /* Белый текст */
+      transition: background-color 0.3s ease; /* Плавное изменение цвета фона */
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Тень */
+      
+}
+
+    /* Блок кнопок */
+        /* Фиксированный блок управления */
+    .buttons, #progress-container {
+    position: fixed;
+    bottom: 30px; /* Расстояние от нижнего края */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Расстояние между кнопками */
+    width: 100%; /* На всю ширину экрана */
+    z-index: 10; /* Поверх другого контента */
+    }
+
+    /* Прогресс-бар отдельно над кнопками */
+    #progress-container {
+    bottom: 100px; /* Расстояние выше кнопок */
+    }
+
+    /* Ползунок для прогресса */
+    #progress-bar {
+    width: 80%; /* Занимает большую часть ширины */
+    max-width: 600px; /* Максимальная ширина */
+    height: 10px; /* Высота */
+    }
+
+    
+
+    /* Кнопка "Previous" */
     #prevButton {
-    background-color: rgb(117, 117, 37);
-    color: white;
-    font-weight: bold;
+      background-color: #b86b06;
+      font-weight: bold;
     }
-
     #prevButton:hover {
-    background-color: rgba(170, 148, 21, 0.377);
-
+      background-color: #fdec00;
     }
 
+    /* Кнопка "Next" */
     #nextButton {
-    background-color: rgb(62, 62, 138);
-    width: 77pt;
+      background-color: #010135;
     }
-
     #nextButton:hover {
-    background-color: rgb(40, 40, 109);
-      
+      background-color: #030386;
     }
 
+    /* Кнопка Play/Pause */
     #playPauseButton {
-    font-weight: bold;
+      font-weight: bold;
     }
-
     .play {
-    background-color: rgb(22, 71, 22);
+      background-color: #015801;
     }
-
     .play:hover {
-    background-color: darkgreen;
+      background-color: rgb(7, 168, 7);
     }
-
     .pause {
-    background-color: rgb(116, 30, 30);
+      background-color: #c90303;
+    }
+    .pause:hover {
+      background-color: #f80101;
     }
 
-    .pause:hover {
-    background-color: rgb(77, 32, 32);
+    /* Ползунок для прогресса */
+    #progress-container {
+      margin-top: 20px;
     }
-    .background1 {
-      background-image: url('background01.jpg');
-      background-size: cover;
-      background-position: center;
-    }
-    .background2 {
-      background-image: url('background02.jpg');
-      background-size: cover;
-      background-position: center;
-    }
-    .background3 {
-      background-image: url('background03.jpg');
-      background-size: cover;
-      background-position: center;
-    }
-    .background4 {
-      background-image: url('background04.jpg');
-      background-size: cover;
-      background-position: center;
-    }    
-    .background5 {
-      background-image: url('background05.jpg');
-      background-size: cover;
-      background-position: center;
-    }
-    .background6 {
-      background-image: url('background06.jpg');
-      background-size: cover;
-      background-position: center;
-      
-    }
-    .background7 {
-    background-image: url('background07.jpg');
-    background-size: cover;
-    background-position: center;
-    }
-    .background8 {
-    background-image: url('background08.jpg');
-    background-size: cover;
-    background-position: center;
-    }
-    .background9 {
-    background-image: url('background09.jpg');
-    background-size: cover;
-    background-position: center;
-    }
-    .background10 {
-    background-image: url('background10.jpg');
-    background-size: cover;
-    background-position: center;
-    }
-    .background11 {
-    background-image: url('background11.jpg');
-    background-size: cover;
-    background-position: center;
+    #progress-bar {
+      width: 400px;
     }
   </style>
 </head>
 <body>
+  <!-- Текст стихотворения -->
   <div id="poem">Loading poem...</div>
+  <!-- Перевод стихотворения -->
   <div id="translation"></div>
-  <div class="buttons">
-    <button id="prevButton" onclick="previousPoem()">Previous</button>
-    <button id="nextButton" onclick="nextPoem()">Next</button>
-  </div>
-  <div class="buttons">
-    <button id="playPauseButton" class="pause" onclick="togglePlayPause()">Pause</button>
-  </div>
-  <audio id="audio"></audio>
 
-  <div id="progress-container" style="margin-top: 20px;">
-    <input
-      id="progress-bar"
-      type="range"
-      min="0"
-      max="100"
-      value="0"
-      style="width: 400px;" <!-- Задаем фиксированную длину в пикселях -->
+  <!-- Кнопки переключения и управления -->
+  <div class="buttons">
+    <button id="prevButton" class="control-button" onclick="previousPoem()">Previous</button>
+    <button id="playPauseButton" class="control-button pause" onclick="togglePlayPause()">Pause</button>
+    <button id="nextButton" class="control-button" onclick="nextPoem()">Next</button>
   </div>
   
+  
+
+  <!-- Аудио и прогресс-бар -->
+  <audio id="audio"></audio>
+  <div id="progress-container">
+    <input id="progress-bar" type="range" min="0" max="100" value="0">
+  </div>
 
   <script>
+    // Массив со стихотворениями, переводами и аудио
     const poems = [
-      {
+    {
         english: "Do you still remember how we used to be?<br>Feeling together, believing whatever<br>My love has said to me<br>Both of us were dreamers<br><br>Young love in the sun<br>Felt like my savior,<br>My spirit I gave you<br>We'd only just begun",
         russian: "Ты еще помнишь, какими мы были раньше?<br>Чувствовали друг друга, верили во все,<br>Что мне говорила моя любовь<br>Мы оба были мечтателями<br><br>Юная любовь на солнце<br>Чувствовала себя моим спасителем,<br>Свой дух я отдала тебе<br>Мы только начали",
         audio: "audio1.mp3"
@@ -237,43 +202,50 @@
       },
 
       {
-        english: "wake me up inside<br>(I can't wake up) wake me up inside<br>(Save me) call my name and save me from the dark<br>(Wake me up) bid my blood to run<br>(I can't wake up) before I come undone<br>(Save me) save me from the nothing I've become",
+        english: "Wake me up inside<br>(I can't wake up) wake me up inside<br>(Save me) call my name and save me from the dark<br>(Wake me up) bid my blood to run<br>(I can't wake up) before I come undone<br>(Save me) save me from the nothing I've become",
         russian: "Разбуди меня изнутри<br>(Я не могу проснуться) Разбуди меня изнутри<br>(Спаси меня) Назови моё имя и спаси меня от тьмы<br>(Разбуди меня) Заставь мою кровь бежать<br>(Я не могу проснуться) прежде, чем я погибну<br>(Спаси меня) Спаси меня от того ничтожества, которым я стал",
         audio: "audio10.mp3"
       },
+
+      
 
       {
         english: "Someday love will find you<br>Break those chains that bind you<br>One night will remind you<br>How we touched and went our separate ways<br><br>If he ever hurts you<br>True love won't desert you<br>You know I still love you<br>Though we touched and went our separate ways",
         russian: "Однажды любовь найдет тебя<br>Разорвет цепи, что связывают тебя<br>Однажды ночь напомнит тебе<br>Как мы соприкоснулись и разошлись<br><br>Если он когда-нибудь причинит тебе боль<br>Настоящая любовь не покинет тебя<br>Ты знаешь, я все еще люблю тебя<br>Хотя мы соприкоснулись и разошлись",
         audio: "audio11.mp3"
+      },
+
+      {
+        english: "I got lost in the wilderness<br>I thought I was surely falling apart<br>The pain you caused cut so deep<br>Truly was a work of art<br>I don't care what they say, I'm gonna do it anyway<br>It's the only thing I see, always staring back at me",
+        russian: "Я заблудился в пустыне<br>Я думал, что я точно разваливаюсь на части<br>Боль, которую ты причинил, ранила так глубоко<br>Это было настоящее произведение искусства<br>Мне все равно, что они говорят, я все равно это сделаю<br>Это единственное, что я вижу, оно всегда смотрит на меня",
+        audio: "audio12.mp3"
+      },
+      {
+        english: "I've been left in the dark, standing cold in the night<br>Memories of your taste, I've been holding on tight<br>Falling apart and I'm living a lie<br>All of this time, I've been loving a liar<br><br>Pulled me in with your words so sweet<br>Every time I ignore the sign<br>Redemption's mine on the day I leave<br>Falling for you was my only crime",
+        russian: "Я осталась в темноте, стоя в холоде ночи<br>Воспоминания о твоем вкусе, я крепко держалась<br>Разваливаюсь на части и живу во лжи<br>Все это время я любила лжеца<br><br>Ты затянул меня своими сладкими словами<br>Каждый раз, когда я игнорирую знак<br>Искупление ждет меня в тот день, когда я уйду<br>Влюбиться в тебя было моим единственным преступлением",
+        audio: "audio13.mp3"
       }
 
 
 
+      // Добавьте остальные элементы по аналогии
     ];
 
-    let currentIndex = Math.floor(Math.random() * poems.length);
-    let isPlaying = false;
+    let currentIndex = Math.floor(Math.random() * poems.length); // Текущий индекс стихотворения
+    let isPlaying = false; // Флаг, воспроизводится ли аудио
 
     const audio = document.getElementById("audio");
     const progressBar = document.getElementById("progress-bar");
 
+    // Загрузка стихотворения
     document.addEventListener("DOMContentLoaded", () => {
-    loadPoem(currentIndex);
-    updatePlayPauseButton();
-
-    // Добавляем обработчик для перемещения ползунка
-    progressBar.addEventListener("input", seekAudio);
+      loadPoem(currentIndex);
+      updatePlayPauseButton();
+      progressBar.addEventListener("input", seekAudio); // Перемотка аудио
     });
 
-    function seekAudio() {
-    const seekTime = (progressBar.value / 100) * audio.duration;
-    audio.currentTime = seekTime;
-    }   
-
-
+    // Обновление прогресса воспроизведения
     audio.addEventListener("timeupdate", updateProgressBar);
-
     audio.addEventListener("ended", () => {
       isPlaying = false;
       updatePlayPauseButton();
@@ -283,18 +255,9 @@
       const poem = poems[index];
       document.getElementById("poem").innerHTML = poem.english;
       document.getElementById("translation").innerHTML = poem.russian;
-
       audio.src = poem.audio;
       audio.currentTime = 0;
       progressBar.value = 0;
-
-      updateBackground(index);
-    }
-
-    function playAudio() {
-      audio.play();
-      isPlaying = true;
-      updatePlayPauseButton();
     }
 
     function togglePlayPause() {
@@ -312,11 +275,11 @@
       if (isPlaying) {
         button.classList.remove("pause");
         button.classList.add("play");
-        button.textContent = "is Playing";
+        button.textContent = "Playing";
       } else {
         button.classList.remove("play");
         button.classList.add("pause");
-        button.textContent = "on Pause";
+        button.textContent = "Paused";
       }
     }
 
@@ -328,49 +291,6 @@
     function seekAudio() {
       const seekTime = (progressBar.value / 100) * audio.duration;
       audio.currentTime = seekTime;
-    }
-
-    function updateBackground(index) {
-      const body = document.body;
-      body.classList.remove("background1", "background2", "background3", "background4");
-
-      switch (index) {
-        case 0:
-          body.classList.add("background1");
-          break;
-        case 1:
-          body.classList.add("background2");
-          break;
-        case 2:
-          body.classList.add("background3");
-          break;
-        case 3:
-          body.classList.add("background4");
-          break;
-        case 4:
-          body.classList.add("background5");
-          break;
-        case 5:
-          body.classList.add("background6");
-          break;
-        case 6:
-          body.classList.add("background7");
-          break;
-        case 7:
-          body.classList.add("background8");
-          break;
-        case 8:
-          body.classList.add("background9");
-          break;
-        case 9:
-          body.classList.add("background10");
-          break;  
-        case 10:
-          body.classList.add("background11");
-          break;
-        case 11:
-          body.classList.add("background12");
-          break;       }
     }
 
     function previousPoem() {
@@ -385,6 +305,11 @@
       playAudio();
     }
 
+    function playAudio() {
+      audio.play();
+      isPlaying = true;
+      updatePlayPauseButton();
+    }
   </script>
 </body>
 </html>
