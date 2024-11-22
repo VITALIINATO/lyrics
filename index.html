@@ -42,21 +42,21 @@
     }
 
     .control-button {
-      width: 70px; /* Диаметр кнопки */
-      height: 70px; /* Диаметр кнопки */
-      font-size: 16px; /* Размер текста */
-      text-align: center; /* Выравнивание текста по центру */
-      border: none; /* Убираем границы */
-      cursor: pointer; /* Курсор указатель */
-      border-radius: 250px; /* Скругленные углы */
-      font-weight: bold; /* Жирный текст */
-      color: white; /* Белый текст */
-      transition: background-color 0.3s ease; /* Плавное изменение цвета фона */
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Тень */
-      background-color: rgba(0, 0, 0, 0.13); /* Полупрозрачный фон */
-
-      
-}
+    width: 80px; /* Диаметр кнопки */
+    height: 80px; /* Диаметр кнопки */
+    font-size: 14px; /* Размер текста */
+    text-align: center; /* Выравнивание текста */
+    line-height: 50px; /* Высота текста внутри кнопки */
+    border: 4px solid rgba(255, 255, 255, 0.4); /* Полупрозрачная граница */
+    cursor: pointer; /* Курсор указатель */
+    border-radius: 50%; /* Круглая форма */
+    font-weight: bold; /* Жирный текст */
+    color: rgb(8, 8, 8); /* Цвет текста */
+    background: rgba(255, 255, 255, 0.2); /* Полупрозрачный белый фон */
+    /* backdrop-filter: blur(10px);  Размытие фона под кнопкой */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Плавные эффекты */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Тень кнопок */
+  }
 
     /* Блок кнопок */
         /* Фиксированный блок управления */
@@ -73,7 +73,7 @@
 
     /* Прогресс-бар отдельно над кнопками */
     #progress-container {
-    bottom: 100px; /* Расстояние выше кнопок */
+    bottom: 120px; /* Расстояние выше кнопок */
     }
 
     /* Ползунок для прогресса */
@@ -83,41 +83,38 @@
     height: 10px; /* Высота */
     }
 
-    
+    .control-button:hover {
+    transform: scale(1.1); /* Увеличение при наведении */
+    background: rgba(255, 255, 255, 0.3); /* Менее прозрачный фон при наведении */
+    border-color: rgba(255, 255, 255, 0.6); /* Менее прозрачная граница */
+  }
 
-    /* Кнопка "Previous" */
-    #prevButton {
-      background-color: #b86b06;
-      font-weight: bold;
-    }
-    #prevButton:hover {
-      background-color: #fdec00;
-    }
+  /* Кнопка "Previous" */
+  #prevButton {
+    border-color: rgba(255, 165, 0, 0.4); /* Оранжевая граница */
+  }
+  #prevButton:hover {
+    border-color: rgba(255, 165, 0, 0.6); /* Более насыщенная оранжевая граница при наведении */
+  }
 
-    /* Кнопка "Next" */
-    #nextButton {
-      background-color: #010135;
-    }
-    #nextButton:hover {
-      background-color: #030386;
-    }
+  /* Кнопка "Next" */
+  #nextButton {
+    border-color: rgba(0, 0, 139, 0.4); /* Синяя граница */
+  }
+  #nextButton:hover {
+    border-color: rgba(0, 0, 139, 0.6); /* Более насыщенная синяя граница при наведении */
+  }
 
-    /* Кнопка Play/Pause */
-    #playPauseButton {
-      font-weight: bold;
-    }
-    .play {
-      background-color: #015801;
-    }
-    .play:hover {
-      background-color: rgb(7, 168, 7);
-    }
-    .pause {
-      background-color: #c90303;
-    }
-    .pause:hover {
-      background-color: #f80101;
-    }
+  /* Кнопка Play/Pause */
+  #playPauseButton {
+    border-color: rgba(50, 205, 50, 0.4); /* Зеленая граница */
+  }
+  #playPauseButton.pause {
+    border-color: rgba(220, 20, 60, 0.4); /* Красная граница в режиме паузы */
+  }
+  #playPauseButton:hover {
+    border-color: rgba(50, 205, 50, 0.6); /* Более насыщенная зеленая граница при наведении */
+  }
 
     /* Ползунок для прогресса */
     #progress-container {
